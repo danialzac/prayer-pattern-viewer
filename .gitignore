@@ -1,0 +1,13 @@
+# dependencies & build output
+node_modules/
+frontend/dist/
+backend/target/
+backend/src/main/resources/static/
+
+# ide & os noise
+.idea/
+*.iml
+.DS_Store
+
+# logs
+*.log
