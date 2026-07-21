@@ -1,0 +1,19 @@
+{
+  "number": 0,
+  "title": "Lesson title here",
+  "surah": "Surah name",
+  "ayah": "2:255",
+  "arabic": "Optional Arabic text of the key ayah, or leave as empty string",
+  "translation": "English translation of the key ayah.",
+  "source": "e.g. QQ Lesson 211 — teacher / series name",
+  "takeaways": [
+    "First distilled point you want to remember.",
+    "Second point.",
+    "Third point (2 to 4 points works best for recall)."
+  ],
+  "reflection": "One gentle sentence connecting the lesson to daily practice, in the same tone as the rest of the site.",
+  "selfTest": {
+    "question": "A question that forces you to recall the core idea.",
+    "answer": "The answer, hidden until the reader taps to reveal."
+  }
+}

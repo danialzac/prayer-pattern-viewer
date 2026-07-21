@@ -1279,6 +1279,148 @@ input {
 }
 
 /* ------------------------------------------------------------
+   Tafsir Journey — lesson cards with self-test
+   ------------------------------------------------------------ */
+.lessons-panel {
+  margin-bottom: 1.2rem;
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.lesson-card {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding: 1.2rem;
+  border-radius: 20px;
+  background: rgba(250, 246, 236, 0.85);
+  border: 1px solid rgba(154, 119, 51, 0.14);
+}
+
+.lesson-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lesson-ref {
+  font-weight: 800;
+  color: var(--gold-deep);
+  font-size: 0.9rem;
+}
+
+.lesson-number {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--soft);
+}
+
+.lesson-card h3 {
+  margin: 0.2rem 0 0;
+  font-family: "Amiri", Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.lesson-surah {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--soft);
+}
+
+.lesson-arabic {
+  margin: 0.4rem 0 0;
+  font-family: "Amiri", Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  text-align: right;
+  color: var(--night-soft);
+}
+
+.lesson-translation {
+  margin: 0.2rem 0 0.3rem;
+  font-style: italic;
+  color: var(--ink);
+}
+
+.lesson-takeaways {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.lesson-takeaways li {
+  color: var(--soft);
+  font-size: 0.9rem;
+}
+
+.lesson-takeaways li::marker {
+  color: var(--gold-deep);
+}
+
+.lesson-reflection {
+  margin: 0.3rem 0 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(201, 163, 90, 0.1);
+  border-left: 3px solid var(--gold);
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+/* //! Self-test block: dark like the odd Ramadan nights, so it reads as "pause and recall". */
+/* //! Blok ujian-diri: gelap macam malam ganjil Ramadan, supaya terbaca "berhenti dan ingat". */
+.lesson-selftest {
+  margin-top: 0.3rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  background: linear-gradient(150deg, var(--night-soft), var(--night));
+  border: 1px solid var(--night-border);
+  display: grid;
+  gap: 0.6rem;
+}
+
+.selftest-q {
+  margin: 0;
+  color: #f4ecd9;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.selftest-a {
+  margin: 0;
+  color: var(--gold-bright);
+  font-size: 0.9rem;
+}
+
+.selftest-btn {
+  justify-self: start;
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+  color: var(--gold-bright);
+  border-color: rgba(230, 199, 138, 0.4);
+}
+
+.selftest-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 16px rgba(8, 27, 23, 0.3);
+}
+
+.lesson-source {
+  margin: 0.2rem 0 0;
+  font-size: 0.74rem;
+  color: var(--soft);
+  opacity: 0.75;
+}
+
+/* ------------------------------------------------------------
    Telegram companion card
    ------------------------------------------------------------ */
 .telegram-panel {

@@ -1,0 +1,65 @@
+# Builds and publishes the browser demo to GitHub Pages on every push to main.
+# Bina dan terbitkan demo browser ke GitHub Pages setiap kali push ke main.
+#
+# The order matters: lessons are validated FIRST. If any lesson file is malformed,
+# the job fails here and nothing is deployed — the live site stays safe.
+# Susunan penting: pelajaran disahkan DULU. Kalau ada fail pelajaran rosak,
+# kerja gagal di sini dan tiada apa di-deploy — site langsung kekal selamat.
+name: Deploy demo to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Let this workflow publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; don't cancel a run that is mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate Tafsir lessons
+        run: npm run validate:lessons
+
+      # --outDir dist overrides vite.config.js (which builds into the backend for full-stack mode).
+      - name: Build browser demo
+        run: VITE_STATIC=1 npx vite build --base=/prayer-pattern-viewer/ --outDir dist --emptyOutDir
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

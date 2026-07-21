@@ -12,6 +12,7 @@ import {
 } from "./Ornaments";
 import { TasbihCounter, QadhaPlanner, TelegramCard } from "./Companions";
 import { ZakatPurifier, KhatamJourney, FastingReturn } from "./Planners";
+import { LessonsSection } from "./Lessons";
 import { calculatePrayerStatsLocal } from "./localEngine";
 
 //! Static mode = the published demo with no Java backend: the engine runs in the browser
@@ -835,6 +836,12 @@ function App() {
         <KhatamJourney />
         <FastingReturn />
       </section>
+
+      <SectionDivider label="Tafsir Journey" />
+
+      {/* //! Study notes from tafsir lessons — content lives in src/content/lessons/*.json. */}
+      {/* //! Nota belajar dari pelajaran tafsir — kandungan duduk dalam src/content/lessons/*.json. */}
+      <LessonsSection />
 
       {data ? (
         <>

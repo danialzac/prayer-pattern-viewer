@@ -11,3 +11,7 @@ backend/src/main/resources/static/
 
 # logs
 *.log
+
+# CI builds & deploys the demo; no build output in git
+frontend/dist/
+docs/

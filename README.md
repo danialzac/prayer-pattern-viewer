@@ -62,11 +62,29 @@ cd frontend && npm run build
 ### Static demo build
 
 ```bash
-cd frontend && VITE_STATIC=1 npx vite build --base=/prayer-pattern-viewer/ --outDir ../docs
+cd frontend && npm run build:demo   # validates lessons, then builds into frontend/dist
 ```
 
-`VITE_STATIC=1` switches the app to the in-browser engine (`src/localEngine.js`) and
-localStorage saves; without it, the app talks to the Spring API.
+`VITE_STATIC=1` (set inside the script) switches the app to the in-browser engine
+(`src/localEngine.js`) and localStorage saves; without it, the app talks to the Spring API.
+
+### Deployment (CI/CD)
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which:
+
+1. **validates every Tafsir lesson** (`npm run validate:lessons`) — a malformed lesson fails
+   the build here, so it can never reach the live site;
+2. builds the browser demo;
+3. deploys it to GitHub Pages.
+
+No build output is committed — the workflow builds fresh each time.
+
+## Tafsir lessons
+
+Study notes live as one JSON file per lesson in `frontend/src/content/lessons/`. To add a
+lesson, copy `_TEMPLATE.json`, fill the fields (ayah, takeaways, a self-test question), and
+commit — it appears on the site automatically after CI. The schema is enforced by
+`frontend/scripts/validate-lessons.mjs`.
 
 ### MySQL instead of H2
 
